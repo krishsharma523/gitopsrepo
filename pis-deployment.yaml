@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pis
+  name: pis
+  namespace: pis
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pis
+  strategy: {}
+  template:
+
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: pis
+    spec:
+      containers:
+      - image: quay.io/rhdevelopers/bgd:1.0.0
+        name: pis
+        env:
+        - name: COLOR
+          value: "blue"
+        resources: {}
